@@ -39,14 +39,14 @@
                         if (!$lines)
                             $lines = array();
 
-                        foreach ($lines as $jsonString) {
+                        foreach (array_reverse($lines) as $jsonString) {
                             $commitList = json_decode($jsonString);
                             
                             // Ignore invalid json lines
                             if (!$commitList)
                                 continue;
                             
-                            foreach ($commitList as $commit) {
+                            foreach (array_reverse($commitList) as $commit) {
                                 $id = htmlspecialchars($commit->id);
                                 $author = htmlspecialchars($commit->author);
                                 $message = nl2br(htmlspecialchars($commit->message));

@@ -21,6 +21,6 @@
     }
 
     // Append "minified" JSON string to data file
-    file_put_contents('data/.commits.txt', json_encode($result), FILE_APPEND);
+    file_put_contents('data/.commits.txt', json_encode($result)."\n", FILE_APPEND);
 
 ?>
