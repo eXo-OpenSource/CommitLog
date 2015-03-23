@@ -5,16 +5,18 @@
 
     // Parse JSON
     $json = json_decode($input);
+    if (!$json)
+        exit;
 
     // Iterate through pushed commits
     $result = array();
     foreach ($json->commits as $commit) {
 
-        array_push($result, {
-            ['id'] => $commit->id,
-            ['author'] => $commit->author,
-            ['message'] => $commit->message
-        });
+        array_push($result, array(
+            'id' => $commit->id,
+            'author' => $commit->author->username,
+            'message' => $commit->message
+        ));
 
     }
 

@@ -33,16 +33,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
+                   <?php
                         $content = file_get_contents('data/.commits.txt');
+                        $lines = explode(PHP_EOL, $content);
+                        if (!$lines)
+                            $lines = array();
 
-                        foreach (explode(PHP_EOL, $content) as $jsonString) {
+                        foreach ($lines as $jsonString) {
                             $commitList = json_decode($jsonString);
-
+                            
+                            // Ignore invalid json lines
+                            if (!$commitList)
+                                continue;
+                            
                             foreach ($commitList as $commit) {
                                 $id = htmlspecialchars($commit->id);
                                 $author = htmlspecialchars($commit->author);
-                                $msg = htmlspecialchars($commit->message);
+                                $message = nl2br(htmlspecialchars($commit->message));
 
                                 echo "<tr><td>$id</td><td>$author</td><td>$message</td></tr>";
                             }
