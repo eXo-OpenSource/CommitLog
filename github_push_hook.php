@@ -15,7 +15,8 @@
         array_push($result, array(
             'id' => $commit->id,
             'author' => $commit->author->username,
-            'message' => $commit->message
+            'message' => $commit->message,
+            'timestamp' => preg_replace('/(.*)T(.*)\+.*/', '${1} ${2}', $commit->timestamp)
         ));
 
     }
