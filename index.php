@@ -50,7 +50,7 @@
                             foreach (array_reverse($commitList) as $commit) {
                                 $id = htmlspecialchars($commit->id);
                                 $author = htmlspecialchars($commit->author);
-                                $timestamp = htmlspecialchars(!is_null($commit->timestamp) ? $commit->timestamp : 'not available');
+                                $timestamp = htmlspecialchars(isset($commit->timestamp) ? $commit->timestamp : 'not available');
                                 $message = nl2br(htmlspecialchars($commit->message));
 
                                 echo "<tr><td>$id</td><td>$author</td><td>$timestamp</td><td>$message</td></tr>";
