@@ -9,6 +9,22 @@
                 margin-bottom: 50px;
             }
 
+            header {
+                width: 100%;
+                height: 40px;
+                margin-bottom: 8px;
+            }
+            header img {
+                height: 100%;
+            }
+
+            header h1 {
+                margin-top: -40px;
+                padding-top: 7px;
+                font-size: 25px;
+                text-align: center;
+            }
+
             footer {
                 text-align: center;
                 border-top: 2px solid #337AB7;
@@ -20,11 +36,26 @@
                 padding-bottom: 5px;
                 width: 100%;
             }
+
+            #line {
+                border-bottom: 2px solid #337AB7;
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 40px;
+            }
         </style>
     </head>
     <body>
+        <div id="line"></div>
+
         <div class="container" id="maincontent">
-            <table class="table table-hover">
+            <header>
+				<img src="Logo.png"/>
+				<h1>Commit log</h1>
+			</header>
+
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Id</th>
