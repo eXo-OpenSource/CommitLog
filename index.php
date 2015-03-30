@@ -8,7 +8,7 @@
             #maincontent {
                 margin-bottom: 50px;
             }
-			
+
 			header {
 				width: 100%;
 			}
@@ -17,7 +17,7 @@
 				margin-top: -3px;
 				height: 60px;
 			}
-			
+
             footer {
                 text-align: center;
                 border-top: 2px solid #337AB7;
@@ -29,13 +29,13 @@
                 padding-bottom: 5px;
                 width: 100%;
             }
-			
+
 			#line {
 				border-bottom: 2px solid #337AB7;
 				position: absolute;
 				width: 100%;
 				left: 0;
-				top: 50px;				
+				top: 50px;
 			}
         </style>
     </head>
@@ -58,6 +58,8 @@
                 </thead>
                 <tbody>
                    <?php
+                        require_once('config.php');
+
                         $content = file_get_contents('data/.commits.txt');
                         $lines = explode(PHP_EOL, $content);
                         if (!$lines)
@@ -72,6 +74,9 @@
 
                             foreach (array_reverse($commitList) as $commit) {
                                 $id = htmlspecialchars($commit->id);
+                                if (USE_SHORT_HASHES)
+                                    $id = substr($id, 0, 7);
+
                                 $author = htmlspecialchars($commit->author);
                                 $timestamp = htmlspecialchars(isset($commit->timestamp) ? $commit->timestamp : 'not available');
                                 $message = nl2br(htmlspecialchars($commit->message));
