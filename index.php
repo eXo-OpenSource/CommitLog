@@ -9,14 +9,14 @@
                 margin-bottom: 50px;
             }
 
-			header {
-				width: 100%;
-			}
-			header img {
-				display: block;
-				margin-top: -3px;
-				height: 60px;
-			}
+            header {
+                width: 100%;
+            }
+            header img {
+                display: block;
+                margin-top: -3px;
+                height: 60px;
+            }
 
             footer {
                 text-align: center;
@@ -30,13 +30,13 @@
                 width: 100%;
             }
 
-			#line {
-				border-bottom: 2px solid #337AB7;
-				position: absolute;
-				width: 100%;
-				left: 0;
-				top: 50px;
-			}
+            #line {
+                border-bottom: 2px solid #337AB7;
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 50px;
+            }
         </style>
     </head>
     <body>
@@ -44,8 +44,8 @@
 
         <div class="container" id="maincontent">
             <header>
-				<img src="Logo.png"/>
-			</header>
+                <img src="Logo.png"/>
+            </header>
 
             <table class="table table-striped table-hover">
                 <thead>
