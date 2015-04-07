@@ -1,7 +1,22 @@
 <?php
+    require_once('config.php');
 
     // Read raw input (to be able to parse application/json)
     $input = file_get_contents('php://input');
+
+    // Get HTTP headers
+    $headers = getallheaders();
+
+    // Verify secret key
+    if (USE_SECRET_KEY) {
+        // Ensure if we got a secret key
+        if (!isset($headers['X-Hub-Signature'))
+            exit;
+
+        // Check if the signature matches
+        if ($headers['X-Hub-Signature'] !== 'sha1='.hash_hmac('sha1', $input, SECRET_KEY))
+            exit;
+    }
 
     // Parse JSON
     $json = json_decode($input);
