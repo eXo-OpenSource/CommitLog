@@ -31,7 +31,8 @@
             'id' => $commit->id,
             'author' => $commit->author->username,
             'message' => $commit->message,
-            'timestamp' => preg_replace('/(.*)T(.*)\+.*/', '${1} ${2}', $commit->timestamp)
+            'timestamp' => preg_replace('/(.*)T(.*)\+.*/', '${1} ${2}', $commit->timestamp),
+            'url' => $commit->url
         ));
 
     }

@@ -80,8 +80,9 @@
                                 $author = htmlspecialchars($commit->author);
                                 $timestamp = htmlspecialchars(isset($commit->timestamp) ? $commit->timestamp : 'not available');
                                 $message = nl2br(htmlspecialchars($commit->message));
+                                $url = htmlspecialchars(isset($commit->url) ? $commit->url : '');
 
-                                echo "<tr><td>$id</td><td>$author</td><td>$timestamp</td><td>$message</td></tr>";
+                                echo "<tr><td><a href=\"$url\">$id</a></td><td>$author</td><td>$timestamp</td><td>$message</td></tr>";
                             }
                         }
                     ?>
