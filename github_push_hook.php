@@ -10,7 +10,7 @@
     // Verify secret key
     if (USE_SECRET_KEY) {
         // Ensure if we got a secret key
-        if (!isset($headers['X-Hub-Signature'))
+        if (!isset($headers['X-Hub-Signature']))
             exit;
 
         // Check if the signature matches
