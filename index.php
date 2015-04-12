@@ -37,6 +37,10 @@
                 left: 0;
                 top: 50px;
             }
+
+            .draw_line {
+               border-top: 3px solid #337AB7;
+            }
         </style>
     </head>
     <body>
@@ -65,6 +69,7 @@
                         if (!$lines)
                             $lines = array();
 
+                        $lastDay = 0;
                         foreach (array_reverse($lines) as $jsonString) {
                             $commitList = json_decode($jsonString);
 
@@ -79,10 +84,20 @@
 
                                 $author = htmlspecialchars($commit->author);
                                 $timestamp = htmlspecialchars(isset($commit->timestamp) ? $commit->timestamp : 'not available');
-                                $message = nl2br(htmlspecialchars($commit->message));
+                                
+				$css_class = '';
+                                if (isset($commit->timestamp)) {
+                                    $parsed_date = date_parse($commit->timestamp);
+                                    if ($parsed_date['day'] != $lastDay)
+                                        $css_class = 'draw_line';
+
+                                    $lastDay = $parsed_date['day'];
+				}
+
+				$message = nl2br(htmlspecialchars($commit->message));
                                 $url = htmlspecialchars(isset($commit->url) ? $commit->url : '');
 
-                                echo "<tr><td><a href=\"$url\">$id</a></td><td>$author</td><td>$timestamp</td><td>$message</td></tr>";
+                                echo "<tr class=\"$css_class\"><td><a href=\"$url\">$id</a></td><td>$author</td><td>$timestamp</td><td>$message</td></tr>";
                             }
                         }
                     ?>
