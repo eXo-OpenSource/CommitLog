@@ -41,6 +41,10 @@
             .draw_line {
                border-top: 3px solid #337AB7;
             }
+
+            td img {
+                width: 40px;
+            }
         </style>
     </head>
     <body>
@@ -55,6 +59,7 @@
                 <thead>
                     <tr>
                         <th>Id</th>
+			<td></td>
                         <th>Author</th>
                         <th>Date</th>
                         <th>Message</th>
@@ -85,7 +90,7 @@
                                 $author = htmlspecialchars($commit->author);
                                 $timestamp = htmlspecialchars(isset($commit->timestamp) ? $commit->timestamp : 'not available');
                                 
-				$css_class = '';
+                                $css_class = '';
                                 if (isset($commit->timestamp)) {
                                     $parsed_date = date_parse($commit->timestamp);
                                     if ($parsed_date['day'] != $lastDay)
@@ -96,8 +101,9 @@
 
 				$message = nl2br(htmlspecialchars($commit->message));
                                 $url = htmlspecialchars(isset($commit->url) ? $commit->url : '');
+                                $avatar_tag = isset($commit->avatar_url) ? "<img src=\"{$commit->avatar_url}\"/>" : '';
 
-                                echo "<tr class=\"$css_class\"><td><a href=\"$url\">$id</a></td><td>$author</td><td>$timestamp</td><td>$message</td></tr>";
+                                echo "<tr class=\"$css_class\"><td><a href=\"$url\">$id</a></td><td>$avatar_tag</td><td>$author</td><td>$timestamp</td><td>$message</td></tr>";
                             }
                         }
                     ?>

@@ -27,14 +27,21 @@
     $result = array();
     foreach ($json->commits as $commit) {
 
-        array_push($result, array(
+        $info = array(
             'id' => $commit->id,
             'author' => $commit->author->username,
             'message' => $commit->message,
             'timestamp' => preg_replace('/(.*)T(.*)\+.*/', '${1} ${2}', $commit->timestamp),
             'url' => $commit->url
-        ));
+        );
 
+       // Search for avatar using the author name
+       if ($json->sender->login == $info['author'])
+           $info['avatar_url'] = $json->sender->avatar_url;
+
+
+       // Add to result array
+       array_push($result, $info);
     }
 
     // Append "minified" JSON string to data file
