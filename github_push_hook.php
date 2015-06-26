@@ -38,6 +38,7 @@
        // Search for avatar using the author name
        if ($json->sender->login == $info['author'])
            $info['avatar_url'] = $json->sender->avatar_url;
+           $info['html_url'] = $json->sender->html_url;
 
 
        // Add to result array
