@@ -98,13 +98,12 @@
 
                                     $lastDay = $parsed_date['day'];
 				}
-
-				                        $message = nl2br(htmlspecialchars($commit->message));
+                                $message = nl2br(htmlspecialchars($commit->message));
                                 $commit_url = htmlspecialchars(isset($commit->url) ? $commit->url : '');
                                 $avatar_tag = isset($commit->avatar_url) ? "<img src=\"{$commit->avatar_url}\"/>" : '';
                                 $sender_tag = isset($commit->html_url) ? "<a href=\"{$commit->html_url}\">$author</a>" : $author;
 
-                                echo "<tr class=\"$css_class\"><td><a href=\"$url\">$id</a></td><td>$avatar_tag</td><td>$sender_tag</td><td>$timestamp</td><td>$message</td></tr>";
+                                echo "<tr class=\"$css_class\"><td><a href=\"$commit_url\">$id</a></td><td>$avatar_tag</td><td>$sender_tag</td><td>$timestamp</td><td>$message</td></tr>";
                             }
                         }
                     ?>
