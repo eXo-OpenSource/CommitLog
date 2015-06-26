@@ -98,7 +98,7 @@
 
                                     $lastDay = $parsed_date['day'];
 				}
-                                $message = nl2br(htmlspecialchars($commit->message));
+                                $message = nl2br(htmlspecialchars(match_all_hashes($commit->message)));
                                 $commit_url = htmlspecialchars(isset($commit->url) ? $commit->url : '');
                                 $avatar_tag = isset($commit->avatar_url) ? "<img src=\"{$commit->avatar_url}\"/>" : '';
                                 $sender_tag = isset($commit->html_url) ? "<a href=\"{$commit->html_url}\">$author</a>" : $author;
