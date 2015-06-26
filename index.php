@@ -99,7 +99,7 @@
                                     $lastDay = $parsed_date['day'];
 				}
                                 $commit_url = htmlspecialchars(isset($commit->url) ? $commit->url : '');
-								$message = nl2br(htmlspecialchars(match_GitHubChars($commit->message, substr($commit_url, 0, strlen($commit_url)-48))));
+                                $message = nl2br(match_GitHubChars($commit->message, substr($commit_url, 0, strlen($commit_url)-48)));
                                 $avatar_tag = isset($commit->avatar_url) ? "<img src=\"{$commit->avatar_url}\"/>" : '';
                                 $sender_tag = isset($commit->html_url) ? "<a href=\"{$commit->html_url}\">$author</a>" : $author;
 
