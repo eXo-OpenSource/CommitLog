@@ -20,6 +20,7 @@
 		// Match @name
 		preg_match_all('/(@[^\s]+)/', $text, $matches, PREG_OFFSET_CAPTURE);
 		foreach ($matches[0] as $match) {
+			$match[0] = preg_replace(array("#[,./]#", "#[^@a-zA-Z0-9]#"), array("", ""), $match[0]);
 			$text = str_replace($match[0], "<a href=\"https://github.com/".substr($match[0], 1, strlen($match[0]))."\">".$match[0]."</a>", $text);
 		}
 		
